@@ -1,0 +1,4 @@
+/config/configstore/
+/config/gcloud/
+.DS_Store
+.gitmodules

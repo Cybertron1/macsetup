@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+source setup-helpers
+
+# Install vim
+# TODO: Make this cross-platform
+brew install vim
+
+mkdir -p "$HOME/.vim"
+mkdir -p "$HOME/.vim/swapfiles"
+
+install_dotfile "vim/autoload"
+install_dotfile "vimrc"
+
+vim +PlugInstall +qall

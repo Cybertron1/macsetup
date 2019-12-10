@@ -1,0 +1,48 @@
+#!/bin/sh
+
+set -e
+
+xcv() {
+  sudo gem install xcode-install
+  xcversion install 11 &>/dev/null  || echo "error" && return
+  xcversion select 11
+}
+
+fastlane env &>/dev/null || sudo gem install fastlane
+nokogiri -v &>/dev/null || sudo gem install nokogiri
+xcversion -v &>/dev/null || xcv
+
+brew install mas
+brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
+sudo chmod a+w /etc/shells
+echo '/usr/local/bin/zsh' >> /etc/shells
+
+chsh -s /usr/local/bin/zsh
+
+rm -f ~/.zcompdump
+chmod go-w '/usr/local/share'
+
+echo 'export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters' >> ~/.zshenv
+
+echo 'export LDFLAGS="-L/usr/local/opt/ncurses/lib"' >> ~/.zshrc
+echo 'export CPPFLAGS="-I/usr/local/opt/ncurses/include"' >> ~/.zshrc
+echo 'export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"' >> ~/.zshrc
+echo 'fpath=(/usr/local/share/zsh-completions $fpath)' >> ~/.zshrc
+echo 'source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >>  ~/.zshrc
+echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"' >> ~/.zshrc
+
+brew cask install iterm2
+brew cask install intellij-idea
+brew cask install webstorm
+brew cask install sourcetree
+brew cask install firefox
+brew cask install 1password
+brew cask install alfred
+brew cask install hyperswitch
+brew cask install microsoft-office
+brew cask install postman
+brew cask install visual-studio-code
+brew cask install dropbox
+brew cask install spotify
+brew cask install rubymine
+mas install 441258766  &>/dev/null ||  echo 'Please log into the App Store'

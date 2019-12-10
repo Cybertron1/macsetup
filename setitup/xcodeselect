@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e 
+
+osascript -e 'tell application "Install Command Line Developer Tools" to quit'
+xcode-select --install
+sleep 1
+
+osascript <<EOD
+  on my_flatten(aList)    if class of aList is not list then      return {aList}    else if length of aList is 0 then      return aList    else      return my_flatten(first item of aList) & (my_flatten(rest of aList))    end if
+  end my_flatten  tell application "System Events"    tell process "Install Command Line Developer Tools"      click button "Install" of window 1      click button "Agree" of window 1      set myButtons to name of every button of sheet of window 1      if "Continue on Battery Power" is in my my_flatten(myButtons) then        click button "Continue on Battery Power" of sheet of window 1      end if    end tell    repeat      delay 5      if not (exists process "Install Command Line Developer Tools") then        exit repeat      end if      tell process "Install Command Line Developer Tools"        set myButtons to name of every button of window 1        if "Done" is in my my_flatten(myButtons) then          click button "Done" of window 1        end if      end tell          set my_srt to "waiting for xcode-select to install"      log my_srt    end repeat  end tell
+EOD

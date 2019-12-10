@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+sudo -v
+
+find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+cat /Library/Preferences/com.apple.TimeMachine.plist &>/dev/null || echo "Please enable full disk access for this appliation" && exit
+
+for f in ./**/*
+do
+  sudo chmod +x "$f"
+done
+
+find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
+
+xcode-select -p &>/dev/null || ./setitup/xcodeselect
+
+osascript -e 'tell application "System Preferences" to quit'
+
+jabba --version &>/dev/null || ./setitup/jabba
+
+./setitup/homebrew
+
+rvm -v &>/dev/null || ./setitup/ruby
+
+nvm -v &>/dev/null || ./setitup/node
+
+./install-apps
+./setitup/mac
+#./setup-git
+#./setup-vim
+
+./open-apps
+
+
+osascript -e 'tell application "iTerm2" to launch'
+osascript -e 'tell application  "Terminal" to quit'
