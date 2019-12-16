@@ -1,0 +1,4 @@
+alias clear="echo -n -e '\e[2J\e[3J\e[1;1H'"
+alias Storm="open ./ -a WebStorm"
+alias f="open ./ -a Finder"
+alias dev="open ~/Documents/private/dev"

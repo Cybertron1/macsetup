@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# shellcheck disable=SC2016,SC2039
 set -e
 
 xcv() {
@@ -13,7 +13,10 @@ nokogiri -v &>/dev/null || sudo gem install nokogiri
 xcversion -v &>/dev/null || xcv
 
 brew install mas
-brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
+
+brew install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+
 sudo chmod a+w /etc/shells
 echo '/usr/local/bin/zsh' >> /etc/shells
 
@@ -22,14 +25,16 @@ chsh -s /usr/local/bin/zsh
 rm -f ~/.zcompdump
 chmod go-w '/usr/local/share'
 
-echo 'export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters' >> ~/.zshenv
+mkdir -p ~/.zsh
 
-echo 'export LDFLAGS="-L/usr/local/opt/ncurses/lib"' >> ~/.zshrc
-echo 'export CPPFLAGS="-I/usr/local/opt/ncurses/include"' >> ~/.zshrc
-echo 'export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"' >> ~/.zshrc
+{
+  echo 'export LDFLAGS="-L/usr/local/opt/ncurses/lib"';
+  echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"';
+  echo 'export CPPFLAGS="-I/usr/local/opt/ncurses/include"';
+  echo 'export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"';
+} > ~/.zsh/.exports
+
 echo 'fpath=(/usr/local/share/zsh-completions $fpath)' >> ~/.zshrc
-echo 'source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >>  ~/.zshrc
-echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"' >> ~/.zshrc
 
 brew cask install iterm2
 brew cask install intellij-idea
@@ -45,4 +50,5 @@ brew cask install visual-studio-code
 brew cask install dropbox
 brew cask install spotify
 brew cask install rubymine
+brew cask install app-cleaner
 mas install 441258766  &>/dev/null ||  echo 'Please log into the App Store'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Based on https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
@@ -10,7 +10,11 @@ sudo -v
 chmod 755 ~/Library/Preferences/
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -348,9 +352,9 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -575,7 +579,6 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
@@ -669,11 +672,208 @@ defaults write com.bahoom.HyperSwitch app_switcher_delay -int 0
 defaults write com.bahoom.HyperSwitch window_preview_size -float 181.4313616071428
 
 ###############################################################################
+# Magnet                                                                      #
+###############################################################################
+
+defaults write com.crowdcafe.windowmagnet alreadyClickedDynamoItem -bool true
+defaults write com.crowdcafe.windowmagnet appAlreadyLaunchedKey -bool true
+defaults write com.crowdcafe.windowmagnet seenDynamo -bool true
+defaults write com.crowdcafe.windowmagnet didntWantToSeeDynamo -bool false
+
+defaults write com.crowdcafe.windowmagnet centerWindowComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowCenterThirdComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowLeftThirdComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowLeftTwoThirdsComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowNorthComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowNorthEastComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowNorthWestComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowRightThirdComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowRightTwoThirdsComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowSouthComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowSouthEastComboKey -dict
+defaults write com.crowdcafe.windowmagnet expandWindowSouthWestComboKey -dict
+defaults write com.crowdcafe.windowmagnet restoreWindowComboKey -dict
+defaults write com.crowdcafe.windowmagnet userAppBlacklist -array
+
+defaults write com.crowdcafe.windowmagnet expandWindowEastComboKey -dict keyCode 124 modifierFlags 1310720
+defaults write com.crowdcafe.windowmagnet expandWindowWestComboKey -dict keyCode 123 modifierFlags 1310720
+defaults write com.crowdcafe.windowmagnet maximizeWindowComboKey -dict keyCode 126 modifierFlags 1310720
+defaults write com.crowdcafe.windowmagnet moveWindowToNextDisplay -dict keyCode 124 modifierFlags 1572864
+defaults write com.crowdcafe.windowmagnet moveWindowToPreviousDisplay -dict keyCode 123 modifierFlags 1572864
+
+###############################################################################
+# iTerm                                                                      #
+###############################################################################
+
+if ! grep -q "auth sufficient pam_tid.so" "/etc/pam.d/sudo"; then
+  sudo chmod o+w /etc/pam.d/sudo
+  echo -e "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" >/etc/pam.d/sudo
+  sudo chmod o-w /etc/pam.d/sudo
+  echo "added"
+fi
+
+defaults write com.googlecode.iterm2 "AdjustWindowForFontSizeChange" -int 0
+defaults write com.googlecode.iterm2 "BootstrapDaemon" -int 0
+defaults write com.googlecode.iterm2 "CGFontRenderingFontSmoothingDisabled" -int 0
+defaults write com.googlecode.iterm2 "DimBackgroundWindows" -int 0
+defaults write com.googlecode.iterm2 "DimInactiveSplitPanes" -int 0
+defaults write com.googlecode.iterm2 "DimOnlyText" -int 0
+defaults write com.googlecode.iterm2 "DisableFullscreenTransparency" -int 0
+defaults write com.googlecode.iterm2 "FocusFollowsMouse" -int 0
+defaults write com.googlecode.iterm2 "HapticFeedbackForEsc" -int 0
+defaults write com.googlecode.iterm2 "HideScrollbar" -int 0
+defaults write com.googlecode.iterm2 "OnlyWhenMoreTabs" -int 0
+defaults write com.googlecode.iterm2 "OpenArrangementAtStartup" -int 0
+defaults write com.googlecode.iterm2 "OpenBookmark" -int 0
+defaults write com.googlecode.iterm2 "OpenNoWindowsAtStartup" -int 0
+defaults write com.googlecode.iterm2 "PromptOnQuit" -int 0
+defaults write com.googlecode.iterm2 "SUSendProfileInfo" -int 0
+defaults write com.googlecode.iterm2 "SeparateStatusBarsPerPane" -int 0
+defaults write com.googlecode.iterm2 "SmartPlacement" -int 0
+defaults write com.googlecode.iterm2 "SoundForEsc" -int 0
+defaults write com.googlecode.iterm2 "TabViewType" -int 0
+defaults write com.googlecode.iterm2 "UseBorder" -int 0
+defaults write com.googlecode.iterm2 "VisualIndicatorForEsc" -int 0
+defaults write com.googlecode.iterm2 "StretchTabsToFillBar" -int 0
+defaults write com.googlecode.iterm2 "ShowNewOutputIndicator" -int 0
+
+defaults write com.googlecode.iterm2 "UseLionStyleFullscreen" -int 1
+defaults write com.googlecode.iterm2 "EnableDivisionView" -int 1
+defaults write com.googlecode.iterm2 "EnableProxyIcon" -int 1
+defaults write com.googlecode.iterm2 "FlashTabBarInFullscreen" -int 1
+defaults write com.googlecode.iterm2 "HideActivityIndicator" -int 1
+defaults write com.googlecode.iterm2 "HideMenuBarInFullscreen" -int 1
+defaults write com.googlecode.iterm2 "HideTab" -int 1
+defaults write com.googlecode.iterm2 "PreserveWindowSizeWhenTabBarVisibilityChanges" -int 1
+defaults write com.googlecode.iterm2 "SUEnableAutomaticChecks" -int 1
+defaults write com.googlecode.iterm2 "SeparateWindowTitlePerTab" -int 1
+defaults write com.googlecode.iterm2 "ShowFullScreenTabBar" -int 1
+defaults write com.googlecode.iterm2 "ShowPaneTitles" -int 1
+defaults write com.googlecode.iterm2 "StatusBarPosition" -int 1
+defaults write com.googlecode.iterm2 "TabStyleWithAutomaticOption" -int 5
+defaults write com.googlecode.iterm2 "SplitPaneDimmingAmount" -string 0.1
+
+plutil -replace "New Bookmarks"."BM Growl" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Blink Allowed" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Cursor Type" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Hide After Opening" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Only The Default BG Color Uses Transparency" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Open Toolbelt" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Scrollback Lines" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Visual Bell" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Prompt Before Closing 2" -bool 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+
+plutil -replace "New Bookmarks"."Blur" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Custom Directory" -string "Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Draw Powerline Glyphs" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Icon" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Reduce Flicker" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Silence Bell" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Show Status Bar" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Unlimited Scrollback" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+
+plutil -replace "New Bookmarks"."Title Components" -integer 3 ~/Library/Preferences/com.googlecode.iterm2.plist
+
+plutil -replace "New Bookmarks"."Transparency" -float 0.2892806154822334 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Blur Radius" -float 18.47742504758883 ~/Library/Preferences/com.googlecode.iterm2.plist
+
+plutil -replace "New Bookmarks"."Status Bar Layout" -xml '<dict>
+    <key>advanced configuration</key>
+    <dict>
+        <key>algorithm</key>
+        <integer>1</integer>
+        <key>font</key>
+        <string>.AppleSystemUIFont 12</string>
+    </dict>
+    <key>components</key>
+    <array>
+        <dict>
+            <key>class</key>
+            <string>iTermStatusBarNetworkUtilizationComponent</string>
+            <key>configuration</key>
+            <dict>
+                <key>knobs</key>
+                <dict>
+                    <key>base: compression resistance</key>
+                    <integer>1</integer>
+                    <key>base: priority</key>
+                    <integer>5</integer>
+                </dict>
+                <key>layout advanced configuration dictionary value</key>
+                <dict>
+                    <key>algorithm</key>
+                    <integer>1</integer>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>class</key>
+            <string>iTermStatusBarCPUUtilizationComponent</string>
+            <key>configuration</key>
+            <dict>
+                <key>knobs</key>
+                <dict>
+                    <key>base: compression resistance</key>
+                    <integer>1</integer>
+                    <key>base: priority</key>
+                    <integer>5</integer>
+                </dict>
+                <key>layout advanced configuration dictionary value</key>
+                <dict>
+                    <key>algorithm</key>
+                    <integer>1</integer>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>class</key>
+            <string>iTermStatusBarGitComponent</string>
+            <key>configuration</key>
+            <dict>
+                <key>knobs</key>
+                <dict>
+                    <key>base: compression resistance</key>
+                    <integer>1</integer>
+                    <key>base: priority</key>
+                    <integer>5</integer>
+                    <key>iTermStatusBarGitComponentPollingIntervalKey</key>
+                    <integer>2</integer>
+                    <key>maxwidth</key>
+                    <string>inf</string>
+                    <key>minwidth</key>
+                    <integer>0</integer>
+                    <key>shared text color</key>
+                    <dict>
+                        <key>Alpha Component</key>
+                        <integer>1</integer>
+                        <key>Blue Component</key>
+                        <string>0.63</string>
+                        <key>Color Space</key>
+                        <string>sRGB</string>
+                        <key>Green Component</key>
+                        <string>0.63</string>
+                        <key>Red Component</key>
+                        <string>0.9</string>
+                    </dict>
+                </dict>
+                <key>layout advanced configuration dictionary value</key>
+                <dict>
+                    <key>algorithm</key>
+                    <integer>1</integer>
+                    <key>font</key>
+                    <string>.AppleSystemUIFont 12</string>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>' ~/Library/Preferences/com.googlecode.iterm2.plist
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
-declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch")
+declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch" "iTerm")
 for app in "${StringArray[@]}"; do
-	killall "${app}" &>/dev/null || true
+  killall "${app}" &>/dev/null || true
 done
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."

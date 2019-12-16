@@ -25,6 +25,9 @@ nvm -v &>/dev/null || ./setitup/node
 
 ./install-apps
 ./setitup/mac
+
+./delete-apple-apps
+
 #./setup-git
 #./setup-vim
 

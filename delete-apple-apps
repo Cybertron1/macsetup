@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+sudo -v
+
+# Pages
+sudo rm -rf /Applications/Pages.app/
+sudo find / -type d -name "*com.apple.iWork.Pages*" -delete 2>/dev/null
+
+# Keynote
+sudo rm -rf /Applications/Keynote.app/
+sudo find / -type d -name "*com.apple.iWork.Keynote*" -delete 2>/dev/null

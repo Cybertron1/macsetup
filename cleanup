@@ -1,20 +1,11 @@
 #!/bin/sh
-
+# shellcheck disable=SC2039
 set -e
-
 sudo -v
-
-brew cask remove --force $(brew cask list) &>/dev/null || echo "cask remove didn't work"
-
+brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
 ./clean-home
 sudo rm -rf /Library/Developer/CommandLineTools
-
 if hash rvm 2>/dev/null; then
   sudo rvm implode
 fi
-
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-
-
-
-

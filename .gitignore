@@ -2,3 +2,5 @@
 /config/gcloud/
 .DS_Store
 .gitmodules
+.idea/
+
