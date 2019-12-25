@@ -2,7 +2,7 @@
 
 set -e
 
-cat /Library/Preferences/com.apple.TimeMachine.plist &>/dev/null || echo "Please enable full disk access for this appliation" && exit
+cat /Library/Preferences/com.apple.TimeMachine.plist &>/dev/null || (echo "Please enable full disk access for this appliation" && exit)
 
 for f in ./**/*
 do
