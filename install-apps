@@ -8,7 +8,7 @@ xcv() {
   xcversion select 11
 }
 
-fastlane env &>/dev/null || sudo gem install fastlane
+fastlane env &>/dev/null || sudo gem install fastlane
 nokogiri -v &>/dev/null || sudo gem install nokogiri
 xcversion -v &>/dev/null || xcv
 
@@ -24,17 +24,6 @@ chsh -s /usr/local/bin/zsh
 
 rm -f ~/.zcompdump
 chmod go-w '/usr/local/share'
-
-mkdir -p ~/.zsh
-
-{
-  echo 'export LDFLAGS="-L/usr/local/opt/ncurses/lib"';
-  echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"';
-  echo 'export CPPFLAGS="-I/usr/local/opt/ncurses/include"';
-  echo 'export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"';
-} > ~/.zsh/.exports
-
-echo 'fpath=(/usr/local/share/zsh-completions $fpath)' >> ~/.zshrc
 
 brew cask install iterm2
 brew cask install intellij-idea

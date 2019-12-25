@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+source ./helper
+
+install_dotfile ../zshrc
+install_dotfile ../zsh/aliases
+install_dotfile ../zsh/exports
+install_dotfile ../zsh/p10k.zsh

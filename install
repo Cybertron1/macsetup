@@ -10,3 +10,4 @@ curl -o prog.zip -LJ https://github.com/Cybertron1/macsetup/archive/master.zip
 unzip prog.zip
 
 cd macsetup*/
+sh ./setup

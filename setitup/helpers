@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 fancy_echo() {
   local fmt="$1"; shift
@@ -16,6 +16,6 @@ install_dotfile() {
 
   if [ ! -e $to ]; then
     fancy_echo "Creating $to ..."
-    ln -s $from $to
+    cp $from $to
   fi
 }
