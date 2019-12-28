@@ -781,7 +781,7 @@ add_or_replace "New\ Bookmarks"."Title\ Components" -integer 3 ~/Library/Prefere
 add_or_replace "New\ Bookmarks"."Transparency" -float 0.2892806154822334 ~/Library/Preferences/com.googlecode.iterm2.plist
 add_or_replace "New\ Bookmarks"."Blur\ Radius" -float 18.47742504758883 ~/Library/Preferences/com.googlecode.iterm2.plist
 
-add_or_replace "New\ Bookmarks"."Status Bar Layout" -xml '<dict>
+add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml '<dict>
     <key>advanced configuration</key>
     <dict>
         <key>algorithm</key>
