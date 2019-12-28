@@ -753,31 +753,35 @@ defaults write com.googlecode.iterm2 "StatusBarPosition" -int 1
 defaults write com.googlecode.iterm2 "TabStyleWithAutomaticOption" -int 5
 defaults write com.googlecode.iterm2 "SplitPaneDimmingAmount" -string 0.1
 
-plutil -replace "New Bookmarks"."BM Growl" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Blink Allowed" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Cursor Type" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Hide After Opening" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Only The Default BG Color Uses Transparency" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Open Toolbelt" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Scrollback Lines" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Visual Bell" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Prompt Before Closing 2" -bool 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -insert New\ Bookmarks -xml '<dict/>' ~/Library/Preferences/com.googlecode.iterm2.plist &>/dev/null || true
+add_or_replace() {
+  sh -c "plutil -insert $1 $2 $3 $4" || sh -c "plutil -replace $1 $2 $3 $4"
+}
+add_or_replace "New\ Bookmarks"."BM\ Growl" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Blink\ Allowed" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Cursor\ Type" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Hide\ After\ Opening" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Only\ The\ Default\ BG\ Color\ Uses\ Transparency" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Open\ Toolbelt" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Scrollback\ Lines" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Visual\ Bell" -integer 0 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Prompt\ Before\ Closing\ 2" -bool 0 ~/Library/Preferences/com.googlecode.iterm2.plist
 
-plutil -replace "New Bookmarks"."Blur" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Custom Directory" -string "Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Draw Powerline Glyphs" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Icon" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Reduce Flicker" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Silence Bell" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Show Status Bar" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Unlimited Scrollback" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Blur" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Custom\ Directory" -string "Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Draw\ Powerline\ Glyphs" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Icon" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Reduce\ Flicker" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Silence\ Bell" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Show\ Status\ Bar" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Unlimited\ Scrollback" -integer 1 ~/Library/Preferences/com.googlecode.iterm2.plist
 
-plutil -replace "New Bookmarks"."Title Components" -integer 3 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Title\ Components" -integer 3 ~/Library/Preferences/com.googlecode.iterm2.plist
 
-plutil -replace "New Bookmarks"."Transparency" -float 0.2892806154822334 ~/Library/Preferences/com.googlecode.iterm2.plist
-plutil -replace "New Bookmarks"."Blur Radius" -float 18.47742504758883 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Transparency" -float 0.2892806154822334 ~/Library/Preferences/com.googlecode.iterm2.plist
+add_or_replace "New\ Bookmarks"."Blur\ Radius" -float 18.47742504758883 ~/Library/Preferences/com.googlecode.iterm2.plist
 
-plutil -replace "New Bookmarks"."Status Bar Layout" -xml '<dict>
+add_or_replace "New\ Bookmarks"."Status Bar Layout" -xml '<dict>
     <key>advanced configuration</key>
     <dict>
         <key>algorithm</key>
