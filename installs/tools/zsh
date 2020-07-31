@@ -31,7 +31,7 @@ config="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/zsh-config"
 cp "$config/aliases" $dir/.aliases
 cp "$config/exports" $dir/.exports
 cp "$config/zsh_config" $dir/.zsh_config
-cp "$config/install" $dir/.install
+cp "$config/tools" $dir/.tools
 cp "$config/p10k.zsh" $dir/.p10k.zsh
 cp "$config/zshrc" $dir/../.zshrc
 
