@@ -2,12 +2,13 @@
 
 set -e
 
-xcode-select -p &>/dev/null || ./tools/xcodeselect
-jabba --version &>/dev/null || ./tools/jabba
-brew --version &>/dev/null || ./tools/homebrew
-rvm -v &>/dev/null || ./tools/ruby
-nvm -v &>/dev/null || ./tools/node
+tools="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/tools"
+xcode-select -p &>/dev/null || "$tools/xcodeselect"
+jabba --version &>/dev/null || "$tools/jabba"
+brew --version &>/dev/null || "$tools/homebrew"
+rvm -v &>/dev/null || "$tools/ruby"
+nvm -v &>/dev/null || "$tools/node"
 
-brew list zsh &>/dev/null || ./tools/zsh
-./tools/tools
-./tools/apps
+brew list zsh &>/dev/null || "$tools/zsh"
+"$tools/tools"
+"$tools/apps"

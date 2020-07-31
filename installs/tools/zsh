@@ -24,12 +24,12 @@ curl -o $dir/git-completion.bash https://raw.githubusercontent.com/git/git/maste
 curl -o $dir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
 #configure zsh dotfiles
-
-cp ./zsh-config/aliases $dir/.aliases
-cp ./zsh-config/exports $dir/.exports
-cp ./zsh-config/zsh_config $dir/.zsh_config
-cp ./zsh-config/install $dir/.install
-cp ./zsh-config/p10k.zsh $dir/.p10k.zsh
-cp ./zsh-config/zshrc $dir/../.zshrc
+config="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/zsh-config"
+cp "$config/aliases" $dir/.aliases
+cp "$config/exports" $dir/.exports
+cp "$config/zsh_config" $dir/.zsh_config
+cp "$config/install" $dir/.install
+cp "$config/p10k.zsh" $dir/.p10k.zsh
+cp "$config/zshrc" $dir/../.zshrc
 
 
