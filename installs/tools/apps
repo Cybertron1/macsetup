@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-source "../helper/print"
+source "./helper/print"
 
 cask_installed() {
   local name=$1

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source "../helper/print"
+source "./helper/print"
 curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
 
 success "Jabba installed - no Java version was installed"

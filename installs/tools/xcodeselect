@@ -2,7 +2,7 @@
 
 set -e
 
-source "../helper/print"
+source "./helper/print"
 
 OS_VERSION=$(sw_vers -productVersion | cut -d'.' -f 1-2)
 

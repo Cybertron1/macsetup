@@ -2,7 +2,7 @@
 
 set -e
 
-source "../helper/print"
+source "./helper/print"
 
 \curl -sSL https://get.rvm.io | bash -s stable
 export PATH="$PATH:$HOME/.rvm/bin"

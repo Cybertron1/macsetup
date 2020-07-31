@@ -2,7 +2,7 @@
 
 set -e
 
-source "../helper/print"
+source "./helper/print"
 
 #install zsh
 brew install zsh
