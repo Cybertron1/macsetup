@@ -8,7 +8,7 @@ sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
 fi
-find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
+find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 
 brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
 if hash brew 2>/dev/null; then
