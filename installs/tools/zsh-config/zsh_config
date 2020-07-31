@@ -1,0 +1,13 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+ZSH_THEME=powerlevel10k/powerlevel10k
+plugins=(
+  git
+  npm
+  nvm
+  xcode
+  alias-tips
+)

@@ -4,10 +4,10 @@ set -e
 
 WORK_DIR=$(mktemp -d)
 cd "$WORK_DIR"
-pwd
+
 curl -o prog.zip -LJ https://github.com/Cybertron1/macsetup/archive/master.zip
 
 unzip -q prog.zip
 
 cd macsetup*/
-sh ./setup
+bash ./setup

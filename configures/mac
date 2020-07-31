@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+sudo -v
+
+chmod 755 ~/Library/Preferences/
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
+
+bash ./prefs/*
+
+declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch" "iTerm")
+for app in "${StringArray[@]}"; do
+  killall "${app}" &>/dev/null || true
+done
+
+echo "Done. Note that some of these changes require a logout/restart to take effect."

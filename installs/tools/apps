@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+cask_installed() {
+  local name=$1
+  brew cask list "$name" &>/dev/null
+  return $?
+}
+
+mas_installed() {
+  local id=$1
+  mas list | grep "$id" &>/dev/null
+  return $?
+}
+
+cask_installed iterm2 || brew cask install iterm2
+cask_installed intellij-idea || brew cask install intellij-idea
+cask_installed webstorm || brew cask install webstorm
+cask_installed rubymine || brew cask install rubymine
+cask_installed sourcetree || brew cask install sourcetree
+cask_installed 1password || brew cask install 1password
+cask_installed alfred || brew cask install alfred
+cask_installed hyperswitch || brew cask install hyperswitch
+cask_installed postman || brew cask install postman
+cask_installed visual-studio-code || brew cask install visual-studio-code
+cask_installed dropbox || brew cask install dropbox
+cask_installed spotify || brew cask install spotify
+cask_installed app-cleaner || brew cask install app-cleaner
+cask_installed adobe-creative-cloud || brew cask install adobe-creative-cloud
+cask_installed typora || brew cask install typora
+
+mas_installed 441258766 || mas install 441258766 &>/dev/null || echo 'Please log into the App Store to install Magnet'
+mas_installed 424389933 || mas install 424389933 &>/dev/null || echo 'Please log into the App Store to install Final Cut Pro X'
+mas_installed 1037126344 || mas install 1037126344 &>/dev/null || echo 'Please log into the App Store to install Apple Configurator 2'

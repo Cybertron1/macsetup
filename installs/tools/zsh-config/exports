@@ -6,10 +6,7 @@ export CPPFLAGS="-I/usr/local/opt/ncurses/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
 
 export ZDOTDIR=~/.zsh/.zcompdump
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.rvm/bin:/usr/local/bin:$PATH"

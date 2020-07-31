@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-osascript -e 'tell application "HyperSwitch" to activate' || echo "error starting hyperswitch"
-osascript -e 'tell application "1Password 7" to activate' || echo "error starting 1password"
-osascript -e 'tell application "Alfred 4" to activate' || echo "error starting alfred"
-osascript -e 'tell application "Dropbox" to activate' || echo "error starting dropbox"
-osascript -e 'tell application "Magnet" to activate' || echo "error starting magnet"

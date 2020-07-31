@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+#install zsh
+brew install zsh
+
+RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended || true
+
+sudo chmod a+w /etc/shells
+echo '/usr/local/bin/zsh' >> /etc/shells
+
+chsh -s /usr/local/bin/zsh
+
+rm -f ~/.zcompdump
+chmod go-w '/usr/local/share'
+
+#install theme & plugins
+dir=~/.zsh
+mkdir -p $dir
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+git clone --depth=1 https://github.com/djui/alias-tips.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/alias-tips"
+
+curl -o $dir/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o $dir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+#configure zsh dotfiles
+
+cp ./zsh-config/aliases $dir/.aliases
+cp ./zsh-config/exports $dir/.exports
+cp ./zsh-config/zsh_config $dir/.zsh_config
+cp ./zsh-config/install $dir/.install
+cp ./zsh-config/p10k.zsh $dir/.p10k.zsh
+cp ./zsh-config/zshrc $dir/../.zshrc
+
+

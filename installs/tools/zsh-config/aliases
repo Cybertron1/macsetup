@@ -1,0 +1,24 @@
+export ALIASES="~/.zsh/.aliases"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias d="cd ~/Documents/private/dev"
+alias z="cd /Users/mika/Documents/school/"
+
+alias Storm="open ./ -a WebStorm"
+alias Mine="open ./ -a RubyMine"
+alias vs="open ./ -a 'Visual Studio Code'"
+alias src="open ./ -a 'SourceTree'"
+alias idea="open ./ -a 'Intellij IDEA'"
+alias f="open ./ -a Finder"
+
+alias ls="ls -lahO"
+
+alias zshrc="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias als="cat $ALIASES"
+alias vals="vim $ALIASES"
+
+alias fuck='sudo $(fc -ln -1)'

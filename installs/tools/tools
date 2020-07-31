@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+xcv() {
+  sudo gem install xcode-install
+  xcversion install 11 &>/dev/null  || echo "error" && return
+  xcversion select 11
+}
+
+xcversion -v &>/dev/null || xcv
+fastlane env &>/dev/null || sudo gem install fastlane
+nokogiri -v &>/dev/null || sudo gem install nokogiri
+
+brew list mas &>/dev/null || brew install mas

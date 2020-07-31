@@ -1,8 +1,0 @@
-alias Storm="open ./ -a WebStorm"
-alias f="open ./ -a Finder"
-alias dev="open ~/Documents/private/dev"
-alias x="xed ."
-alias src="open ./ -a SourceTree"
-
-alias ls="ls -alOG"
-alias clear="echo -n -e '\e[2J\e[3J\e[1;1H'"
