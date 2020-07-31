@@ -9,5 +9,8 @@ sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
 fi
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+if hash brew 2>/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+fi
+
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
