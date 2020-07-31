@@ -10,8 +10,8 @@ if hash rvm 2>/dev/null; then
 fi
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 
-brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
 if hash brew 2>/dev/null; then
+  brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)" || true
 fi
 
