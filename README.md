@@ -1,3 +1,2 @@
-bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/master/install) to easily install all the repository and setup your mac.
-
-Highly opinonated setup
+install: bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/master/install)
+remove: bash <(install: bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/master/rollback/delete-all)

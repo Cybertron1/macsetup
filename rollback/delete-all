@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+sudo -v
+
+brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
+sudo rm -rf /Library/Developer/CommandLineTools
+if hash rvm 2>/dev/null; then
+  sudo rvm implode
+fi
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete

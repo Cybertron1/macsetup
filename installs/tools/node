@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+source "../helper/print"
 # Install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
@@ -12,3 +12,5 @@ export NVM_DIR="$HOME/.nvm"
 # Install and use node version 10 by default
 nvm install 12
 nvm alias default 12
+
+success "nvm and node 12 installed"

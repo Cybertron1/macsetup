@@ -2,7 +2,11 @@
 
 set -e
 
+source "../helper/print"
+
 \curl -sSL https://get.rvm.io | bash -s stable
 export PATH="$PATH:$HOME/.rvm/bin"
 source ~/.rvm/scripts/rvm
 rvm install ruby --latest
+
+success "rvm and latest ruby installed"

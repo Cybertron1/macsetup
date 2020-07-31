@@ -2,6 +2,8 @@
 
 set -e
 
+
+
 tools="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/tools"
 xcode-select -p &>/dev/null || "$tools/xcodeselect"
 jabba --version &>/dev/null || "$tools/jabba"

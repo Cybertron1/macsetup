@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+source "../helper/print"
 homebrew_prefix="/usr/local"
 
 sudo mkdir -p "$homebrew_prefix"
@@ -10,3 +10,5 @@ sudo chflags norestricted "$homebrew_prefix"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 sudo chown -R "$(whoami)" $homebrew_prefix/*
 brew update
+
+success "homebrew installed"

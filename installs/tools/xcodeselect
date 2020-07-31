@@ -2,6 +2,8 @@
 
 set -e
 
+source "../helper/print"
+
 OS_VERSION=$(sw_vers -productVersion | cut -d'.' -f 1-2)
 
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
@@ -12,3 +14,5 @@ PROD=$(softwareupdate -l |
   tr -d '\n')
 softwareupdate -i "$PROD" --verbose
 rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+
+success "CommandLineTools were installed"
