@@ -11,7 +11,7 @@ done
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
 
-killall "System Preferences"
+killall "System Preferences" || true
 
 ./installs/install
 ./configures/mac
