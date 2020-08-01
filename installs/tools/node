@@ -13,4 +13,4 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 12
 nvm alias default 12
 
-echo -e "✅ \e[92mnvm and node 12 installed"
+printf "✅\033[92mnvm and node 12 installed\n"

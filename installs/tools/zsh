@@ -35,5 +35,5 @@ cp "$config/tools" $dir/.tools
 cp "$config/p10k.zsh" $dir/.p10k.zsh
 cp "$config/zshrc" $dir/../.zshrc
 
-echo -e "✅ \e[92mZSH and all its dependencies were set up"
+printf "✅\033[92mZSH and all its dependencies were set up\n"
 

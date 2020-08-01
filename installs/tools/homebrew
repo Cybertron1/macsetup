@@ -11,4 +11,4 @@ sudo chflags norestricted "$homebrew_prefix"
 sudo chown -R "$(whoami)" $homebrew_prefix/*
 brew update
 
-echo -e "✅ \e[92mhomebrew installed"
+printf "✅\033[92mhomebrew installed\n"

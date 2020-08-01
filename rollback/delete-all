@@ -15,6 +15,6 @@ find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -
 which -s brew
 if [[ $? == 0 ]]; then
   brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)" || true
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)" -f -q || true
 fi
 

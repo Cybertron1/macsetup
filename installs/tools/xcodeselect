@@ -15,4 +15,4 @@ PROD=$(softwareupdate -l |
 softwareupdate -i "$PROD" --verbose
 rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 
-echo -e "✅ \e[92mCommandLineTools were installed"
+printf "✅\033[92mCommandLineTools were installed\n"
