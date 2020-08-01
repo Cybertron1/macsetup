@@ -10,7 +10,7 @@ done
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
 
-killall "System Preferences" >/dev/null || true
+killall "System Preferences" &>/dev/null || true
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do
