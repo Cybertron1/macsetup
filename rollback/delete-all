@@ -9,7 +9,7 @@ if hash rvm 2>/dev/null; then
   sudo rvm implode
 fi
 
-chsh -s /bin/bash
+chsh -s /bin/zsh
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 which -s brew
