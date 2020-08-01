@@ -2,8 +2,6 @@
 
 set -e
 
-
-
 OS_VERSION=$(sw_vers -productVersion | cut -d'.' -f 1-2)
 
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
@@ -12,7 +10,7 @@ PROD=$(softwareupdate -l |
   head -n 1 | awk -F"*" '{print $2}' |
   sed -e 's/^ *//' |
   tr -d '\n')
-softwareupdate -i "$PROD" --verbose
+softwareupdate -i "$PROD"
 rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 
-printf "✅\033[92mCommandLineTools were installed\n"
+printf "✅\033[92mCommandLineTools were installed\033[0m\n"

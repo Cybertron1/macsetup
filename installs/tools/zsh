@@ -2,15 +2,13 @@
 
 set -e
 
-
-
 #install zsh
-brew install zsh
+brew install zsh >/dev/null
 
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended || true
 
 sudo chmod a+w /etc/shells
-echo '/usr/local/bin/zsh' >> /etc/shells
+echo '/usr/local/bin/zsh' >>/etc/shells
 
 chsh -s /usr/local/bin/zsh
 
@@ -20,20 +18,19 @@ chmod go-w '/usr/local/share'
 #install theme & plugins
 dir=~/.zsh
 mkdir -p $dir
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-git clone --depth=1 https://github.com/djui/alias-tips.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/alias-tips"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" >/dev/null
+git clone --depth=1 https://github.com/djui/alias-tips.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/alias-tips" >/dev/null
 
-curl -o $dir/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-curl -o $dir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+curl -o $dir/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash >/dev/null
+curl -o $dir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh >/dev/null
 
 #configure zsh dotfiles
 config="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/zsh-config"
-cp "$config/aliases" $dir/.aliases
-cp "$config/exports" $dir/.exports
-cp "$config/zsh_config" $dir/.zsh_config
-cp "$config/tools" $dir/.tools
-cp "$config/p10k.zsh" $dir/.p10k.zsh
-cp "$config/zshrc" $dir/../.zshrc
+cp "$config/aliases" $dir/.aliases >/dev/null
+cp "$config/exports" $dir/.exports >/dev/null
+cp "$config/zsh_config" $dir/.zsh_config >/dev/null
+cp "$config/tools" $dir/.tools >/dev/null
+cp "$config/p10k.zsh" $dir/.p10k.zsh >/dev/null
+cp "$config/zshrc" $dir/../.zshrc >/dev/null
 
-printf "✅\033[92mZSH and all its dependencies were set up\n"
-
+printf "✅\033[92mZSH and all its dependencies were set up\033[0m\n"

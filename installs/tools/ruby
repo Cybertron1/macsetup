@@ -4,9 +4,9 @@ set -e
 
 
 
-\curl -sSL https://get.rvm.io | bash -s stable
+\curl -sSL https://get.rvm.io | bash -s stable >/dev/null
 export PATH="$PATH:$HOME/.rvm/bin"
 source ~/.rvm/scripts/rvm
-rvm install ruby --latest
+rvm install ruby --latest >/dev/null
 
-printf "✅\033[92mrvm and latest ruby installed\n"
+printf "✅\033[92mrvm and latest ruby installed\033[0m\n"
