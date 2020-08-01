@@ -5,12 +5,7 @@ sudo -v
 
 chmod 755 ~/Library/Preferences/
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do
-  sudo -n true
-  sleep 60
-  kill -0 "$$" || exit
-done 2>/dev/null &
+
 prefs="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/prefs"
 bash "$prefs/*"
 
