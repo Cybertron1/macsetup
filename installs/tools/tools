@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-source "./helper/print"
+
 
 xcv() {
   sudo gem install xcode-install
-  xcversion install 11 &>/dev/null  || error "couldn't install xcode 11" && return
+  xcversion install 11 &>/dev/null  || echo -e "✅ \e[91mcouldn't install xcode 11" && return
   xcversion select 11
 }
 

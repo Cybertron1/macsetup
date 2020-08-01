@@ -2,7 +2,7 @@
 
 set -e
 
-source "./helper/print"
+
 
 #install zsh
 brew install zsh
@@ -35,5 +35,5 @@ cp "$config/tools" $dir/.tools
 cp "$config/p10k.zsh" $dir/.p10k.zsh
 cp "$config/zshrc" $dir/../.zshrc
 
-success "ZSH and all its dependencies were set up"
+echo -e "✅ \e[92mZSH and all its dependencies were set up"
 
