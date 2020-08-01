@@ -8,6 +8,9 @@ sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
 fi
+
+chsh -s /bin/bash
+
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 which -s brew
 if [[ $? == 0 ]]brew 2>/dev/null; then
