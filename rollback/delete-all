@@ -13,7 +13,7 @@ chsh -s /bin/zsh
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 which -s brew
-if [[ $? == 0 ]]brew 2>/dev/null; then
+if [[ $? == 0 ]]; then
   brew cask remove --force "$(brew cask list)" &>/dev/null || echo "cask remove didn't work"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)" || true
 fi
