@@ -3,7 +3,7 @@
 set -e
 
 tools="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/tools"
-! [[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]] || "$tools/xcodeselect"
+[[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]] || "$tools/xcodeselect"
 jabba --version &>/dev/null || "$tools/jabba"
 brew --version &>/dev/null || "$tools/homebrew"
 rvm -v &>/dev/null || "$tools/ruby"

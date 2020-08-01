@@ -6,8 +6,8 @@ homebrew_prefix="/usr/local"
 
 sudo mkdir -p "$homebrew_prefix"
 sudo chflags norestricted "$homebrew_prefix" >/dev/null
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" >/dev/null
+export CI="install"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 sudo chown -R "$(whoami)" $homebrew_prefix/*
 brew update >/dev/null
 
