@@ -10,7 +10,7 @@ PROD=$(softwareupdate -l |
   head -n 1 | awk -F"*" '{print $2}' |
   sed -e 's/^ *//' |
   tr -d '\n')
-softwareupdate -i "$PROD"
+softwareupdate -i "$PROD" --verbose
 rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-
+/usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 printf "✅\033[92mCommandLineTools were installed\033[0m\n"
