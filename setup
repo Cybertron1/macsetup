@@ -2,6 +2,7 @@
 
 set -e
 
+sudo -v
 cat /Library/Preferences/com.apple.TimeMachine.plist &>/dev/null || (echo "enable full disk access in the preferences for the Terminal" && exit 1)
 for f in ./**/*
 do
