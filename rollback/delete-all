@@ -3,7 +3,8 @@
 set -e
 
 sudo -v
-
+WORK_DIR=$(mktemp -d)
+cd "$WORK_DIR"
 sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
@@ -12,9 +13,10 @@ fi
 chsh -s /bin/zsh
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
-which -s brew
-if [[ $? == 0 ]]; then
+
+if command -v brew; then
   brew cask uninstall --force $(brew cask list) &>/dev/null || echo "cask remove didn't work"
-  sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh) -f -q" || true
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output uninstall.sh
+  sudo /bin/bash ./output.sh -f -q || true
 fi
 
