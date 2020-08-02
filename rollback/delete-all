@@ -5,6 +5,8 @@ set -e
 sudo -v
 WORK_DIR=$(mktemp -d)
 cd "$WORK_DIR"
+
+pwd
 sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
@@ -17,6 +19,7 @@ find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -
 if command -v brew; then
   brew cask uninstall --force $(brew cask list) &>/dev/null || echo "cask remove didn't work"
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output uninstall.sh
+  ls
   sudo /bin/bash ./output.sh -f -q || true
 fi
 
