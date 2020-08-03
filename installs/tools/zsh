@@ -18,8 +18,8 @@ chmod go-w '/usr/local/share'
 #install theme & plugins
 dir=~/.zsh
 mkdir -p $dir
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" >/dev/null
-git clone --depth=1 https://github.com/djui/alias-tips.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/alias-tips" >/dev/null
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+git clone --depth=1 https://github.com/djui/alias-tips.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/alias-tips"
 
 curl -o $dir/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash >/dev/null
 curl -o $dir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh >/dev/null
