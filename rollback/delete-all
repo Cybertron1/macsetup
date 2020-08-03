@@ -1,10 +1,10 @@
 #!/bin/bash
 
+set -e
+
 sudo -v
 SH="$(mktemp -d)/uninstall.sh"
 
-
-pwd
 sudo rm -rf /Library/Developer/CommandLineTools
 if hash rvm 2>/dev/null; then
   sudo rvm implode
@@ -14,10 +14,10 @@ chsh -s /bin/zsh
 
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 
-defaults delete com.bahoom.HyperSwitch
-defaults delete com.googlecode.iterm2
-defaults delete com.crowdcafe.windowmagnet
-defaults delete com.apple.dock
+defaults delete com.bahoom.HyperSwitch || true
+defaults delete com.googlecode.iterm2 || true
+defaults delete com.crowdcafe.windowmagnet || true
+defaults delete com.apple.dock || true
 
 
 if command -v brew; then
