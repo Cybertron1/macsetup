@@ -1,7 +1,7 @@
 source ~/.zsh/.zsh_config
 source ~/.zsh/.exports
-source ~/.zsh/.tools
 source ~/.fastlane/completions/completion.sh
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/.p10k.zsh
 source ~/.zsh/.aliases
+source ~/.zsh/.tools
