@@ -3,8 +3,8 @@
 set -e
 
 sudo -v
-WORK_DIR=$(mktemp -d)
-cd "$WORK_DIR"
+SH="$(mktemp -d)/uninstall.sh"
+
 
 pwd
 sudo rm -rf /Library/Developer/CommandLineTools
@@ -18,8 +18,8 @@ find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -
 
 if command -v brew; then
   brew cask uninstall --force $(brew cask list) &>/dev/null || echo "cask remove didn't work"
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output uninstall.sh
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output "$SH"
   ls
-  sudo /bin/bash ./output.sh -f -q || true
+  sudo /bin/bash "$SH" -f -q || true
 fi
 
