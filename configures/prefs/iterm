@@ -100,7 +100,7 @@ add_or_replace "New\ Bookmarks"."Minimum\ Contrast" -float 0 ~/Library/Preferenc
 add_or_replace "New\ Bookmarks"."Normal\ Font" -string "MesloLGS-NF-Regular\ 13" ~/Library/Preferences/com.googlecode.iterm2.plist
 add_or_replace "New\ Bookmarks"."Terminal\ Type" -string "xterm-256color" ~/Library/Preferences/com.googlecode.iterm2.plist
 
-add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml '<dict>
+SELECTION_COLOR='<dict>
   <key>Red Component</key>
   <string>0</string>
   <key>Color Space</key>
@@ -111,8 +111,11 @@ add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml '<dict>
   <string>1</string>
   <key>Green Component</key>
   <string>0.351104736328125</string>
-</dict>' ~/Library/Preferences/com.googlecode.iterm2.plist
-add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml '<dict>
+</dict>'
+
+add_or_replace "New\ Bookmarks"."Selection\ Color" -xml "$SELECTION_COLOR" ~/Library/Preferences/com.googlecode.iterm2.plist
+
+STATUS_BAR='<dict>
     <key>advanced configuration</key>
     <dict>
         <key>algorithm</key>
@@ -201,4 +204,6 @@ add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml '<dict>
             </dict>
         </dict>
     </array>
-</dict>' ~/Library/Preferences/com.googlecode.iterm2.plist
+</dict>'
+
+add_or_replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml "$STATUS_BAR" ~/Library/Preferences/com.googlecode.iterm2.plist
