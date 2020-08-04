@@ -113,7 +113,7 @@ SELECTION_COLOR='<dict>
 <string>0.351104736328125</string>
 </dict>'
 
-plutil -replace "New\ Bookmarks"."Selection\ Color" -xml "$SELECTION_COLOR" ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Selection Color" -xml "$SELECTION_COLOR" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 STATUS_BAR='<dict>
     <key>advanced configuration</key>
@@ -206,4 +206,4 @@ STATUS_BAR='<dict>
     </array>
 </dict>'
 
-plutil -replace "New\ Bookmarks"."Status\ Bar\ Layout" -xml "$STATUS_BAR" ~/Library/Preferences/com.googlecode.iterm2.plist
+plutil -replace "New Bookmarks"."Status Bar Layout" -xml "$STATUS_BAR" ~/Library/Preferences/com.googlecode.iterm2.plist
