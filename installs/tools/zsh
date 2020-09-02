@@ -33,4 +33,9 @@ cp "$config/tools" $dir/.tools >/dev/null
 cp "$config/p10k.zsh" $dir/.p10k.zsh >/dev/null
 cp "$config/zshrc" $dir/../.zshrc >/dev/null
 
+
+#setup fastlane auto complete
+export CI=true
+fastlane env &>/dev/null && fastlane enable_auto_complete
+unset CI
 printf "✅\033[92mZSH and all its dependencies were set up\033[0m\n"

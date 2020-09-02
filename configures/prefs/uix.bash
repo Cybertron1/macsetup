@@ -3,7 +3,6 @@
 set -e
 sudo -v
 
-
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -65,11 +64,17 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
-# all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-#rm -rf ~/Library/Application Support/Dock/desktoppicture.db
-#sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-#sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
+# Set a custom wallpaper image. replace data/wallpaper.jpg
+
+
+WALLPAPER_NAME="wallpaper.jpg"
+WALLPAPER="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/data/$WALLPAPER_NAME"
+SETUP_DIR="$HOME/.setup"
+mkdir -p "$SETUP_DIR"
+cp "$WALLPAPER" "$SETUP_DIR"
+osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$HOME/.setup/wallpaper.jpg\""
+
+#sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Users/mika/.setup/wallpaper.jpg'";
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -97,10 +102,10 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 #defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

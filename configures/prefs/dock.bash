@@ -1,48 +1,5 @@
 #!/bin/bash
-
 set -e
-
-###############################################################################
-# Energy saving                                                               #
-###############################################################################
-
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
-
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
-
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
-
-###############################################################################
-# Screen                                                                      #
-###############################################################################
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Save screenshots to the ~/Documents/Screenshots
-mkdir -p "${HOME}/Documents/Screenshots"
-defaults write com.apple.screencapture location -string "${HOME}/Documents/Screenshots"
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
-
-# Disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
-
-# Enable subpixel font rendering on non-Apple LCDs
-# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-defaults write NSGlobalDomain AppleFontSmoothing -int 1
-
-# Enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
-
-###############################################################################
-# Dock, Dashboard, and hot corners                                            #
-###############################################################################
 
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 49
@@ -58,11 +15,6 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
-
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-defaults write com.apple.dock persistent-apps -array
 
 # Show only open applications in the Dock
 #defaults write com.apple.dock static-only -bool true
@@ -112,3 +64,7 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
+PLIST="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/data/dock.plist"
+PLIST_TARGET="$HOME/Library/Preferences/com.apple.dock.plist"
+PLIST_DATA=$(plutil -extract "persistent-apps" xml1 -o - "$PLIST" | sed -n '/<array>/,/<\/array>/p')
+plutil -replace "persistent-apps" -xml "$PLIST_DATA" "$PLIST_TARGET"

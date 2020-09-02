@@ -28,6 +28,7 @@ cask_installed spotify || brew cask install spotify
 cask_installed app-cleaner || brew cask install app-cleaner
 cask_installed adobe-creative-cloud || brew cask install adobe-creative-cloud
 cask_installed typora || brew cask install typora
+cask_installed whatsapp || brew cask install whatsapp
 
 mas_installed 441258766 || mas install 441258766 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
 mas_installed 424389933 || mas install 424389933 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"

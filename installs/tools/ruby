@@ -2,8 +2,6 @@
 
 set -e
 
-
-
 \curl -sSL https://get.rvm.io | bash -s stable >/dev/null
 export PATH="$PATH:$HOME/.rvm/bin"
 source ~/.rvm/scripts/rvm

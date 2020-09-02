@@ -7,13 +7,14 @@ chmod 755 ~/Library/Preferences/
 
 prefs="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/prefs"
 
-for f in "$prefs"/*; do  # or wget-*.sh instead of *.sh
+for f in "$prefs"/*; do
   bash "$f"
 done
 
-declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch" "iTerm")
+declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch" "iTerm" "Alfred" "Magnet" "ControlStrip")
 for app in "${StringArray[@]}"; do
   killall "${app}" &>/dev/null || true
+  open "${app}"
 done
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
