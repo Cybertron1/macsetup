@@ -2,13 +2,21 @@
 
 set -e
 
-homebrew_prefix="/usr/local"
+install() {
+  if command -v brew >/dev/null; then
+    printf "⚠️  \033[93mhomebrew already installed\033[0m\n"
+    return
+  fi
+  homebrew_prefix="/usr/local"
 
-sudo mkdir -p "$homebrew_prefix"
-sudo chflags norestricted "$homebrew_prefix" >/dev/null
-export CI="install"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-sudo chown -R "$(whoami)" $homebrew_prefix/*
-brew update >/dev/null
+  sudo mkdir -p "$homebrew_prefix"
+  sudo chflags norestricted "$homebrew_prefix" >/dev/null
+  export CI="install"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  sudo chown -R "$(whoami)" $homebrew_prefix/*
+  brew update >/dev/null
 
-printf "✅\033[92mhomebrew installed\033[0m\n"
+ printf "✅ \033[92mhomebrew installed\033[0m\n"
+}
+
+install

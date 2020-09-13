@@ -6,15 +6,14 @@ sudo -v
 chmod 755 ~/Library/Preferences/
 
 prefs="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/prefs"
-
-for f in "$prefs"/*; do
-  bash "$f"
+printf "+--------------------------------------------------------------+
+|  🛠  Macsetup is going to configure dev tools, apps and more  |
++--------------------------------------------------------------+\n\n"
+for file in "$prefs"/*; do
+  if ! [[ -d "$file" ]]; then
+    name="$(basename -- "$file")"
+    printf "\033[36m🛠  Next up: %s\033[0m\n" "$name"
+    bash "$file"
+    printf "\e[1A\e[K\033[92m🎉 finished: %s\033[0m\n\n" "$name"
+  fi
 done
-
-declare -a StringArray=("Activity Monitor" "cfprefsd" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "HyperSwitch" "iTerm" "Alfred" "Magnet" "ControlStrip")
-for app in "${StringArray[@]}"; do
-  killall "${app}" &>/dev/null || true
-  open "${app}"
-done
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+install() {
+  if command -v rvm >/dev/null; then
+    printf "⚠️ \033[93m rvm already installed\033[0m\n"
+    return
+  fi
+  \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+  source "$HOME/.rvm/scripts/rvm"
+  brew install ncurses
+  export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+  export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+  export PATH="$(rvm gemdir 2>/dev/null)/bin:/usr/local/opt/ncurses/bin:$HOME/.rvm/bin:$PATH"
+  rvm install ruby --latest
+  rvm use ruby --install --default
+  ruby -v
+  printf "✅\033[92m rvm and latest ruby installed\033[0m\n"
+}
+
+install

@@ -2,14 +2,35 @@
 set -e
 
 xcv() {
-  sudo gem install xcode-install
+  source "$HOME/.rvm/scripts/rvm"
+  gem list -i xcode-install >/dev/null || sudo gem install xcode-install
+  if [[ -n $(xcversion installed) ]]; then
+    return
+  fi
+  echo -e "\033[92m----------------------------------------------------------------
+Please provide your Apple Developer Program account credentials
+----------------------------------------------------------------\033[0m"
+  read -rp 'E-Mail: ' email
+  export XCODE_INSTALL_USER="$email"
   xcversion update
-  xcversion install 11.6 >/dev/null  || printf "✅ \033[91mcouldn't install xcode 11\033[0m\n" && return
-  xcversion select 11.6
+  local version
+  version=$(xcversion list | grep -v ".*beta" | tail -n1)
+  echo "$version"
+  xcversion install "$version" || printf "⛔️ \033[91mcouldn't install xcode %s\033[0m\n" "$version" && return
+  xcversion select "$version"
+  exit 1
 }
 
-xcversion -v &>/dev/null || xcv
-fastlane env &>/dev/null || sudo gem install fastlane  >/dev/null
-nokogiri -v &>/dev/null || sudo gem install nokogiri  >/dev/null
+install() {
+  xcversion -v &>/dev/null || xcv
+  command -v fastlane &>/dev/null || sudo gem install fastlane
+  export CI=true
+  fastlane enable_auto_complete
+  unset CI
+  nokogiri -v &>/dev/null || sudo gem install nokogiri
+  brew list mas &>/dev/null || brew install mas
+  brew list git &>/dev/null || brew install git
+  brew list vim &>/dev/null || brew install vim
+}
 
-brew list mas &>/dev/null || brew install mas  >/dev/null
+install

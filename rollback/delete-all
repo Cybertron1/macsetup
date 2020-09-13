@@ -12,18 +12,17 @@ fi
 
 chsh -s /bin/zsh
 
-find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
+sudo find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
 
 defaults delete com.bahoom.HyperSwitch || true
 defaults delete com.googlecode.iterm2 || true
 defaults delete com.crowdcafe.windowmagnet || true
 defaults delete com.apple.dock || true
 
-
 if command -v brew; then
-  brew cask uninstall --force $(brew cask list) &>/dev/null || echo "cask remove didn't work"
+  brew cask uninstall --force "$(brew list --cask)" &>/dev/null || echo "cask remove didn't work"
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output "$SH"
-  ls
   sudo /bin/bash "$SH" -f -q || true
 fi
 
+sudo rm -rf /usr/local/

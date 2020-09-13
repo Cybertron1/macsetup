@@ -3,8 +3,13 @@ set -e
 
 cask_installed() {
   local name=$1
-  brew cask list "$name" &>/dev/null
+  brew list --cask "$name" &>/dev/null
   return $?
+}
+
+cask_install() {
+  local name=$1
+  brew cask install "$name" || true
 }
 
 mas_installed() {
@@ -13,25 +18,31 @@ mas_installed() {
   return $?
 }
 
-cask_installed iterm2 || brew cask install iterm2
-cask_installed intellij-idea || brew cask install intellij-idea
-cask_installed webstorm || brew cask install webstorm
-cask_installed rubymine || brew cask install rubymine
-cask_installed sourcetree || brew cask install sourcetree
-cask_installed 1password || brew cask install 1password
-cask_installed alfred || brew cask install alfred
-cask_installed hyperswitch || brew cask install hyperswitch
-cask_installed postman || brew cask install postman
-cask_installed visual-studio-code || brew cask install visual-studio-code
-cask_installed dropbox || brew cask install dropbox
-cask_installed spotify || brew cask install spotify
-cask_installed app-cleaner || brew cask install app-cleaner
-cask_installed adobe-creative-cloud || brew cask install adobe-creative-cloud
-cask_installed typora || brew cask install typora
-cask_installed whatsapp || brew cask install whatsapp
+apps() {
+  cask_installed iterm2 || cask_install iterm2
+  cask_installed intellij-idea || cask_install intellij-idea
+  cask_installed webstorm || cask_install webstorm
+  cask_installed rubymine || cask_install rubymine
+  cask_installed sourcetree || cask_install sourcetree
+  cask_installed 1password || cask_install 1password
+  cask_installed alfred || cask_install alfred
+  cask_installed hyperswitch || cask_install hyperswitch
+  cask_installed postman || cask_install postman
+  cask_installed visual-studio-code || cask_install visual-studio-code
+  cask_installed dropbox || cask_install dropbox
+  cask_installed spotify || cask_install spotify
+  cask_installed app-cleaner || cask_install app-cleaner
+  cask_installed adobe-creative-cloud || cask_install adobe-creative-cloud
+  cask_installed typora || cask_install typora
+  cask_installed whatsapp || cask_install whatsapp
+  brew tap homebrew/cask-drivers
+  cask_installed sonos || cask_install sonos
 
-mas_installed 441258766 || mas install 441258766 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
-mas_installed 424389933 || mas install 424389933 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"
-mas_installed 1037126344 || mas install 1037126344 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
+  mas_installed 441258766 || mas install 441258766 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
+  mas_installed 424389933 || mas install 424389933 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"
+  mas_installed 1037126344 || mas install 1037126344 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
 
-printf "✅\033[92mall apps installed\033[0m\n"
+  printf "✅ \033[92mall apps installed\033[0m\n"
+}
+
+apps

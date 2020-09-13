@@ -11,8 +11,16 @@ getc() {
   /bin/stty "$save_state"
 }
 
-sudo /usr/bin/xcode-select --install
-echo "Press any key when the installation has completed."
-getc
-sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
-printf "✅\033[92mCommandLineTools were installed\033[0m\n"
+install() {
+  if [[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]]; then
+    printf "⚠️ \033[93m xcode dev tools already installed\033[0m\n"
+    return
+  fi
+  sudo /usr/bin/xcode-select --install
+  echo "Press any key when the installation has completed."
+  getc
+  sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
+  printf "✅\033[92mCommandLineTools were installed\033[0m\n"
+}
+
+install

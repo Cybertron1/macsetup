@@ -3,22 +3,16 @@
 set -e
 
 sudo -v
-cat /Library/Preferences/com.apple.TimeMachine.plist &>/dev/null || (echo "enable full disk access in the preferences for the Terminal" && exit 1)
-for f in ./**/*
-do
+for f in ./**/*; do
   sudo chmod +x "$f"
 done
 
+#cleanup
 find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
-
-killall "System Preferences" &>/dev/null || true
-
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do
-  sudo -n true
-  sleep 60
-  kill -0 "$$" || exit
-done 2>/dev/null &
 
 ./installs/install
 ./configures/mac
+
+echo -e "\033[92m+----------------------------------------------------------------------------------+
+| ✅ Done. Note that some of these changes require a logout/restart to take effect |
++----------------------------------------------------------------------------------+\033[0m"
