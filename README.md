@@ -4,15 +4,13 @@
 
 ## Table of Contents
 
-1. [What it does](#What it does)
+1. [What it does](#What-it-does)
 2. [Installation](#Installation)
-3. [What it installs](#What it installs)
+3. [What it installs](#What-it-installs)
 
 ## What it does
 
 Macsetup simply installs and configures apps, dev tools and more.
-
-
 
 ## Installation
 
@@ -21,8 +19,6 @@ Macsetup simply installs and configures apps, dev tools and more.
 ### Using Git and the setup script
 
 You can clone the repo wherever you want. The setup script will install and configure your Mac. It will copy the dotfiles into $HOME.
-
-
 
 ```bash
 git clone https://github.com/Cybertron1/macsetup.git
@@ -90,7 +86,7 @@ If the app is not available on brew, it needs to be downloaded via the AppStore.
 - [Whatsapp](https://www.whatsapp.com/) - bye bye privacy 🥳
 - [Sonos](https://www.sonos.com/home)
 
-#### AppStore using mas
+#### AppStore using mas
 
 - [Magnet](https://magnet.crowdcafe.com)
 - [Final Cut Pro X](https://www.apple.com/de/final-cut-pro/)
