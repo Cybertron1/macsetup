@@ -12,7 +12,10 @@ fi
 
 chsh -s /bin/zsh
 
-sudo find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -exec rm -rf {} \;
+declare -a TO_REMOVE=(".rvm" ".nvm" ".zsh" ".zshrc" ".bashrc" ".bash_profile" ".bash_history" ".jabba" ".setup" ".cache" ".oh-my-zsh")
+for file in "${TO_REMOVE[@]}"; do
+  rm -rf "${HOME:?}/$file"
+done
 
 defaults delete com.bahoom.HyperSwitch || true
 defaults delete com.googlecode.iterm2 || true

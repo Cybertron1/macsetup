@@ -7,8 +7,10 @@ for f in ./**/*; do
   sudo chmod +x "$f"
 done
 
-#cleanup
-find ~ ! -name .Trash ! -name .CFUserTextEncoding ! -name .DS_Store -name '.*' -maxdepth 1 -delete
+declare -a TO_REMOVE=(".rvm" ".nvm" ".zsh" ".zshrc" ".bashrc" ".bash_profile" ".bash_history" ".jabba" ".setup" ".cache" ".oh-my-zsh")
+for file in "${TO_REMOVE[@]}"; do
+  rm -rf "${HOME:?}/$file"
+done
 
 ./installs/install
 ./configures/mac

@@ -27,7 +27,6 @@ install() {
   export CI=true
   fastlane enable_auto_complete
   unset CI
-  nokogiri -v &>/dev/null || sudo gem install nokogiri
   brew list mas &>/dev/null || brew install mas
   brew list git &>/dev/null || brew install git
   brew list vim &>/dev/null || brew install vim
