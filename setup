@@ -3,17 +3,8 @@
 set -e
 
 sudo -v
-for f in ./**/*; do
-  sudo chmod +x "$f"
-done
-
-declare -a TO_REMOVE=(".rvm" ".nvm" ".zsh" ".zshrc" ".bashrc" ".bash_profile" ".bash_history" ".jabba" ".setup" ".cache" ".oh-my-zsh")
-for file in "${TO_REMOVE[@]}"; do
-  rm -rf "${HOME:?}/$file"
-done
-
-./installs/install
-./configures/mac
+bash ./installs/install
+bash ./configures/mac
 
 echo -e "\033[92m+----------------------------------------------------------------------------------+
 | ✅ Done. Note that some of these changes require a logout/restart to take effect |

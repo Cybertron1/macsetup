@@ -74,8 +74,6 @@ mkdir -p "$SETUP_DIR"
 cp "$WALLPAPER" "$SETUP_DIR"
 osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$HOME/.setup/wallpaper.jpg\""
 
-#sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Users/mika/.setup/wallpaper.jpg'";
-
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################

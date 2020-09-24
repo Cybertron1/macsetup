@@ -5,6 +5,10 @@ set -e
 install() {
   #install zsh
   brew list zsh &>/dev/null || brew install zsh
+  rm -rf "$HOME/.zshrc"
+  rm -rf "$HOME/.bashrc"
+  rm -rf "$HOME/.bash_profile"
+  rm -rf "$HOME/.bash_history"
   if ! [[ -d "$HOME/.oh-my-zsh" ]]; then
     RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended || true
   fi
@@ -19,6 +23,7 @@ install() {
 
   #install theme & plugins
   dir=~/.zsh
+  rm -rf $dir
   mkdir -p $dir
   p10k="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
   alias="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/alias-tips"

@@ -3,10 +3,11 @@
 set -e
 
 install() {
-  if command -v rvm >/dev/null; then
+  if [[ -d "$HOME/.rvm" ]]; then
     printf "⚠️ \033[93m rvm already installed\033[0m\n"
     return
   fi
+
   \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
   source "$HOME/.rvm/scripts/rvm"
   brew install ncurses

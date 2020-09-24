@@ -7,8 +7,15 @@ echo "$WORK_DIR"
 cd "$WORK_DIR"
 
 curl -o prog.zip -LJ https://github.com/Cybertron1/macsetup/archive/master.zip
-
 unzip -q prog.zip
 
 cd macsetup*/
+
+# todo:
+# - add warning before executing anything - the user needs to know stuff will be deleted
+# - make it configurable to what is executed (install, config or both)
+# - test install on vm
+# - test config update
+# - finish README
+
 bash ./setup
