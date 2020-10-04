@@ -6,17 +6,17 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/utils.sh"
 
 question="Please make sure that this script might override some already existing files.
 Do you still want to continue? (y/n): "
-EXIT_CODE=0
-ask "$question" || EXIT_CODE=$?
-if [ $EXIT_CODE -eq 1 ]; then
+answer=0
+ask "$question" || answer=$?
+if [ $answer -eq 1 ]; then
   echo -e "\033[33m+----------------------------------------------------------------------------------+
 | ⚠️  Script was stopped. Nothing was done/changed.                                 |
 +----------------------------------------------------------------------------------+\033[0m"
   exit 0
 fi
 
-#[ "$MAC_SETUP_EXECUTE" != "config" ] && bash ./installs/install
-#[ "$MAC_SETUP_EXECUTE" != "install" ] && bash ./configures/mac
+[ "$MAC_SETUP_EXECUTE" != "config" ] && bash ./installs/install
+[ "$MAC_SETUP_EXECUTE" != "install" ] && bash ./configures/mac
 
 echo -e "\033[92m+----------------------------------------------------------------------------------+
 | ✅ Done. Note that some of these changes require a logout/restart to take effect |
