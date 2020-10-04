@@ -1,10 +1,23 @@
 #!/bin/bash
-
 set -e
 
 install() {
   #install zsh
-  brew list zsh &>/dev/null || brew install zsh
+  if [[ -d "$HOME/.oh-my-zsh" ]] || brew list zsh &>/dev/null ; then
+    printf "⚠️ \033[93m zsh is already installed\033[0m\n"
+    # shellcheck source=../../util.sh
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
+    question="Do you want to reinstall zsh, oh-my-zsh and powerlevel10k?
+This will remove .zshrc, .bashrc, .bash_profile, .bash_history\033[0m (y/n): "
+    answer=0
+    ask "$question" || answer=$?
+    if [ $answer -eq 1 ]; then
+      return
+    fi
+    brew uninstall zsh &>/dev/null || true
+    rm -rf ~/.oh-my-zsh
+  fi
+  brew install zsh
   rm -rf "$HOME/.zshrc"
   rm -rf "$HOME/.bashrc"
   rm -rf "$HOME/.bash_profile"

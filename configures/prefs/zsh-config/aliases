@@ -4,8 +4,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-alias d="cd ~/Documents/private/dev"
-alias z="cd /Users/mika/Documents/school/"
+alias dev="cd $HOME/Documents/dev"
+alias z="cd $HOME/Documents/school/"
 
 alias Storm="open ./ -a WebStorm"
 alias Mine="open ./ -a RubyMine"
@@ -20,5 +20,6 @@ alias zshrc="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias als="cat $ALIASES"
 alias vals="vim $ALIASES"
+alias exports="vim ~/.zsh/.exports"
 
 alias fuck='sudo $(fc -ln -1)'

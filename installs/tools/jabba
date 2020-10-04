@@ -5,7 +5,15 @@ set -e
 install() {
   if [[ -d "$HOME/.jabba" ]]; then
     printf "⚠️  \033[93mJabba already installed\033[0m\n"
-    return
+    # shellcheck source=../../util.sh
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
+    question="Do you want to reinstall jabba?\033[0m (y/n): "
+    answer=0
+    ask "$question" || answer=$?
+    if [ $answer -eq 1 ]; then
+      return
+    fi
+    rm -rf "$HOME/.jabba"
   fi
 
   curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash -s -- --skip-rc && . ~/.jabba/jabba.sh >/dev/null

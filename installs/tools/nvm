@@ -5,7 +5,15 @@ set -e
 install() {
   if [[ -d "$HOME/.nvm" ]]; then
     printf "⚠️  \033[93mnvm already installed\033[0m\n"
-    return
+    # shellcheck source=../../util.sh
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
+    question="Do you want to reinstall nvm?\033[0m (y/n): "
+    answer=0
+    ask "$question" || answer=$?
+    if [ $answer -eq 1 ]; then
+      return
+    fi
+    rm -rf "$HOME/.nvm"
   fi
   # Install nvm
   curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash >/dev/null

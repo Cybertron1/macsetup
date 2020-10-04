@@ -1,11 +1,61 @@
 #!/bin/bash
-
 set -e
+help() {
+  echo "this should show help"
+}
 
-sudo -v
-bash ./installs/install
-bash ./configures/mac
+containsElement() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
 
-echo -e "\033[92m+----------------------------------------------------------------------------------+
-| ✅ Done. Note that some of these changes require a logout/restart to take effect |
-+----------------------------------------------------------------------------------+\033[0m"
+if [[ $# -eq 0 ]]; then
+  export MAC_SETUP_INSTALL=true
+  export MAC_SETUP_CONFIG=true
+fi
+
+shopt -s nocasematch
+for var in "$@"; do
+  case $var in
+  --execute=* | -e=*)
+    execute=${var#*=}
+    check=("install" "config" "all")
+    if ! containsElement "${execute}" "${check[@]}"; then
+      echo "error"
+      exit 1
+    fi
+
+    if [ -n "$MAC_SETUP_EXECUTE" ]; then
+      echo "error 2"
+    fi
+    export MAC_SETUP_EXECUTE="$execute"
+    ;;
+
+  --questions=* | -q=*)
+    questions=${var#*=}
+    check=("yes" "no" "ask")
+    if ! containsElement "${questions}" "${check[@]}"; then
+      echo "error"
+      exit 1
+    fi
+
+    if [ -n "$MAC_SETUP_QUESTIONS" ]; then
+      echo "error 2"
+    fi
+    export MAC_SETUP_QUESTIONS="$questions"
+    ;;
+  --help | -h)
+    help
+    exit 0
+    ;;
+  *)
+    echo "$var is not a valid argument"
+    help
+    exit 1
+    ;;
+  esac
+done
+shopt -u nocasematch
+bash ./runner

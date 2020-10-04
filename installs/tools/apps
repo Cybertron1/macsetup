@@ -1,46 +1,42 @@
 #!/bin/bash
 set -e
 
-cask_installed() {
+install_cask() {
   local name=$1
-  brew list --cask "$name" &>/dev/null
-  return $?
+  brew list --cask "$name" &>/dev/null || brew cask install "$name" || true
 }
 
-cask_install() {
-  local name=$1
-  brew cask install "$name" || true
-}
-
-mas_installed() {
+install_mas() {
   local id=$1
-  mas list | grep "$id" &>/dev/null
+  mas list | grep "$id" &>/dev/null || mas install "$id" &>/dev/null
   return $?
 }
 
 apps() {
-  cask_installed iterm2 || cask_install iterm2
-  cask_installed intellij-idea || cask_install intellij-idea
-  cask_installed webstorm || cask_install webstorm
-  cask_installed rubymine || cask_install rubymine
-  cask_installed sourcetree || cask_install sourcetree
-  cask_installed 1password || cask_install 1password
-  cask_installed alfred || cask_install alfred
-  cask_installed hyperswitch || cask_install hyperswitch
-  cask_installed postman || cask_install postman
-  cask_installed visual-studio-code || cask_install visual-studio-code
-  cask_installed dropbox || cask_install dropbox
-  cask_installed spotify || cask_install spotify
-  cask_installed app-cleaner || cask_install app-cleaner
-  cask_installed adobe-creative-cloud || cask_install adobe-creative-cloud
-  cask_installed typora || cask_install typora
-  cask_installed whatsapp || cask_install whatsapp
+  install_cask iterm2
+  install_cask intellij-idea
+  install_cask webstorm
+  install_cask rubymine
+  install_cask sourcetree
+  install_cask 1password
+  install_cask alfred
+  install_cask hyperswitch
+  install_cask postman
+  install_cask visual-studio-code
+  install_cask dropbox
+  install_cask spotify
+  install_cask app-cleaner
+  install_cask adobe-creative-cloud
+  install_cask typora
+  install_cask whatsapp
+  install_cask proxyman
+  install_cask vmware-fusion
   brew tap homebrew/cask-drivers
-  cask_installed sonos || cask_install sonos
+  install_cask sonos
 
-  mas_installed 441258766 || mas install 441258766 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
-  mas_installed 424389933 || mas install 424389933 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"
-  mas_installed 1037126344 || mas install 1037126344 &>/dev/null || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
+  install_mas 441258766 || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
+  install_mas 424389933 || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"
+  install_mas 1037126344 || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
 
   printf "✅ \033[92mall apps installed\033[0m\n"
 }

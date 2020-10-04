@@ -15,7 +15,6 @@ Please provide your Apple Developer Program account credentials
   xcversion update
   local version
   version=$(xcversion list | grep -v ".*beta" | tail -n1)
-  echo "$version"
   xcversion install "$version" || printf "⛔️ \033[91mcouldn't install xcode %s\033[0m\n" "$version" && return
   xcversion select "$version"
   exit 1

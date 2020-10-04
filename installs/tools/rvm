@@ -5,7 +5,15 @@ set -e
 install() {
   if [[ -d "$HOME/.rvm" ]]; then
     printf "⚠️ \033[93m rvm already installed\033[0m\n"
-    return
+    # shellcheck source=../../util.sh
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
+    question="Do you want to reinstall rvm?\033[0m (y/n): "
+    answer=0
+    ask "$question" || answer=$?
+    if [ $answer -eq 1 ]; then
+      return
+    fi
+    rm -rf "$HOME/.rvm"
   fi
 
   \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles

@@ -4,9 +4,20 @@ set -e
 
 install() {
   if command -v brew >/dev/null; then
-    printf "⚠️  \033[93mhomebrew already installed\033[0m\n"
-    return
+    printf "⚠️  \033[93mhomebrew already installed\n"
+    # shellcheck source=../../util.sh
+    source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
+    question="Do you want to reinstall homebrew?\033[0m (y/n): "
+    answer=0
+    ask "$question" || answer=$?
+    if [ $answer -eq 1 ]; then
+      return
+    fi
+    # uninstall homebrew
+    brew cask uninstall --force "$(brew list --cask)" &>/dev/null
+    brew remove --force "$(brew list)"
   fi
+  exit 0
   homebrew_prefix="/usr/local"
 
   sudo mkdir -p "$homebrew_prefix"
@@ -16,7 +27,7 @@ install() {
   sudo chown -R "$(whoami)" $homebrew_prefix/*
   brew update >/dev/null
 
- printf "✅ \033[92mhomebrew installed\033[0m\n"
+  printf "✅ \033[92mhomebrew installed\033[0m\n"
 }
 
 install
