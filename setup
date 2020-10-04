@@ -15,7 +15,7 @@ if [[ $# -eq 0 ]]; then
   export MAC_SETUP_EXECUTE="all"
   export MAC_SETUP_QUESTIONS="ask"
 fi
-
+echo "$@"
 shopt -s nocasematch
 for var in "$@"; do
   case $var in

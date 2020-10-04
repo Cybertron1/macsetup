@@ -18,4 +18,5 @@ cd macsetup*/
 # - test config update
 # - finish README
 
+echo "$@"
 bash ./setup "$@"
