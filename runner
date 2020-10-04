@@ -4,8 +4,8 @@ sudo -v
 # shellcheck source=./util.sh
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/utils.sh"
 
-question="Please make sure that this script might override some already existing files.
-Do you still want to continue? (y/n): "
+question="\033[33mPlease make sure that this script might override some already existing files.
+Do you still want to continue? (y/n):\033[0m "
 answer=0
 ask "$question" || answer=$?
 if [ $answer -eq 1 ]; then
