@@ -12,8 +12,8 @@ containsElement() {
 }
 
 if [[ $# -eq 0 ]]; then
-  export MAC_SETUP_INSTALL=true
-  export MAC_SETUP_CONFIG=true
+  export MAC_SETUP_EXECUTE="all"
+  export MAC_SETUP_QUESTIONS="ask"
 fi
 
 shopt -s nocasematch
