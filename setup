@@ -1,7 +1,28 @@
 #!/bin/bash
 set -e
 help() {
-  echo "this should show help"
+  B="\033[1m"
+  S="\033[0m"
+  INDENT="\t\t\t\t"
+  echo "macsetup is a simple script to setup a mac. The script contain two parts: install and config"
+  echo -e "${B}install$S installs all developer tools, apps and everything else that is necessary"
+  echo -e "${B}config$S configures said tools and apps. Additionally it runs some custom dotfiles to have the mac to your liking"
+  echo
+  echo -e "This script can be run directly from github
+${B}bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/master/install) --help$S"
+  echo -e "Or it can be run locally ${B}./setup --help"$S
+  echo
+  echo "Default: setup -e=all -q=ask"
+  echo "Syntax: setup [-e=*|-q=*|-h]"
+  echo "options:"
+  echo -e "\t-e, --execute\t\tWhich part of the script to execute
+$INDENT${B}Default$S: all
+$INDENT${B}Allowed$S: all, install, config"
+  echo -e "\t-q, --questions\t\tIn some cases a user action is required. -q can provide a predefined answer
+$INDENT${B}Default$S: ask
+$INDENT${B}Allowed$S: ask, yes, no"
+  echo -e "\t-h, --help\t\tDisplays help"
+  echo
 }
 
 containsElement() {
