@@ -1,14 +1,10 @@
 #!/bin/bash
 set -e
 sudo -v
-# shellcheck source=./util.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/utils.sh"
-
-question="\033[33mPlease make sure that this script might override some already existing files.
+echo -en "\033[33mPlease make sure that this script might override some already existing files.
 Do you still want to continue? (y/n):\033[0m "
-answer=0
-ask "$question" || answer=$?
-if [ $answer -eq 1 ]; then
+read -r answer
+if [ "$answer" == "${answer#[Yy]}" ]; then
   echo -e "\033[33m+----------------------------------------------------------------------------------+
 | ⚠️  Script was stopped. Nothing was done/changed.                                 |
 +----------------------------------------------------------------------------------+\033[0m"

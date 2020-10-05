@@ -8,9 +8,9 @@ install() {
     # shellcheck source=../../util.sh
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
     question="Do you want to reinstall jabba?\033[0m (y/n): "
-    answer=0
-    ask "$question" || answer=$?
-    if [ $answer -eq 1 ]; then
+    exit_code=0
+    ask "$question" || exit_code=$?
+    if [ $exit_code -eq 1 ]; then
       return
     fi
     rm -rf "$HOME/.jabba"

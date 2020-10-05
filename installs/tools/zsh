@@ -9,9 +9,9 @@ install() {
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
     question="Do you want to reinstall zsh, oh-my-zsh and powerlevel10k?
 This will remove .zshrc, .bashrc, .bash_profile, .bash_history\033[0m (y/n): "
-    answer=0
-    ask "$question" || answer=$?
-    if [ $answer -eq 1 ]; then
+    exit_code=0
+    ask "$question" || exit_code=$?
+    if [ $exit_code -eq 1 ]; then
       return
     fi
     brew uninstall zsh &>/dev/null || true

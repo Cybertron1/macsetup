@@ -8,16 +8,20 @@ install() {
     # shellcheck source=../../util.sh
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../utils.sh"
     question="Do you want to reinstall homebrew?\033[0m (y/n): "
-    answer=0
-    ask "$question" || answer=$?
-    if [ $answer -eq 1 ]; then
+    exit_code=0
+    ask "$question" || exit_code=$?
+    if [ $exit_code -eq 1 ]; then
       return
     fi
     # uninstall homebrew
-    brew cask uninstall --force "$(brew list --cask)" &>/dev/null
+    printf "Removing cask install"
+    brew cask uninstall --force "$(brew list --cask)" &>/dev/null || true
+    printf "Removing brew install"
     brew remove --force "$(brew list)"
+    SH="$(mktemp -d)/uninstall.sh"
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh --output "$SH"
+    sudo /bin/bash "$SH" -f -q || true
   fi
-  exit 0
   homebrew_prefix="/usr/local"
 
   sudo mkdir -p "$homebrew_prefix"
