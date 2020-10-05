@@ -33,6 +33,14 @@ EOF
 </application>
 EOF
 
+    cat >"$CURRENT_PATH/options/laf.xml" <<EOF
+ <application>
+  <component name="LafManager">
+    <laf class-name="com.intellij.ide.ui.laf.darcula.DarculaLaf" />
+  </component>
+</application>
+EOF
+
     cat >"$CURRENT_PATH/keymaps/custom.xml" <<EOF
 <keymap version="1" name="custom" parent="Mac OS X 10.5+">
   <action id="CommentByLineComment">
