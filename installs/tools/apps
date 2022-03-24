@@ -28,6 +28,7 @@ apps() {
   install_cask typora
   install_cask whatsapp
   install_cask proxyman
+  install_cask rectangle
   
   install_mas 1037126344 || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
 
