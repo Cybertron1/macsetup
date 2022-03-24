@@ -29,6 +29,7 @@ install() {
   export CI="install"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   sudo chown -R "$(whoami)" $homebrew_prefix/*
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   brew update >/dev/null
 
   printf "✅ \033[92mhomebrew installed\033[0m\n"
