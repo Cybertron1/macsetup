@@ -5,7 +5,7 @@ sudo -v
 ###############################################################################
 # iTerm                                                                      #
 ###############################################################################
-
+eval "$(/opt/homebrew/bin/brew shellenv)" || true
 if ! grep -q "auth sufficient pam_tid.so" "/etc/pam.d/sudo"; then
   sudo chmod o+w /etc/pam.d/sudo
   echo -e "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" >/etc/pam.d/sudo
