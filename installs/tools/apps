@@ -13,6 +13,7 @@ install_mas() {
 }
 
 apps() {
+  eval "$(/opt/homebrew/bin/brew shellenv)" || true
   install_cask iterm2
   install_cask intellij-idea
   install_cask webstorm
