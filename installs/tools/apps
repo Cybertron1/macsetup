@@ -3,7 +3,7 @@ set -e
 
 install_cask() {
   local name=$1
-  brew list --cask "$name" &>/dev/null || brew cask install "$name" || true
+  brew list --cask "$name" &>/dev/null || brew install "$name" --cask || true
 }
 
 install_mas() {
@@ -24,19 +24,11 @@ apps() {
   install_cask hyperswitch
   install_cask postman
   install_cask visual-studio-code
-  install_cask dropbox
   install_cask spotify
-  install_cask app-cleaner
-  install_cask adobe-creative-cloud
   install_cask typora
   install_cask whatsapp
   install_cask proxyman
-  install_cask vmware-fusion
-  brew tap homebrew/cask-drivers
-  install_cask sonos
-
-  install_mas 441258766 || printf "⚠️\033[93mPlease log into the App Store to install Magnet\033[0m\n"
-  install_mas 424389933 || printf "⚠️\033[93mPlease log into the App Store to install Final Cut Pro X\033[0m\n"
+  
   install_mas 1037126344 || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
 
   printf "✅ \033[92mall apps installed\033[0m\n"
