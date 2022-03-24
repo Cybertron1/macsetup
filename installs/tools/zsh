@@ -3,6 +3,7 @@ set -e
 
 install() {
   #install zsh
+  eval "$(/opt/homebrew/bin/brew shellenv)" || true
   if [[ -d "$HOME/.oh-my-zsh" ]] || brew list zsh &>/dev/null ; then
     printf "⚠️ \033[93m zsh is already installed\033[0m\n"
     # shellcheck source=../../util.sh
