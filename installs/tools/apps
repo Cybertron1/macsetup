@@ -16,6 +16,7 @@ apps() {
   eval "$(/opt/homebrew/bin/brew shellenv)" || true
   install_cask iterm2
   install_cask intellij-idea
+  install_cask forticlient
   install_cask webstorm
   install_cask rubymine
   install_cask sourcetree
@@ -29,6 +30,8 @@ apps() {
   install_cask whatsapp
   install_cask proxyman
   install_cask rectangle
+  install_cask hiddenbar
+  install_cask firefox
   
   install_mas 1037126344 || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
 
