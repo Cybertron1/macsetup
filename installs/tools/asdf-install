@@ -8,6 +8,8 @@ install_plugin() {
 }
 
 install_asdf() {
+  local old_path=$PATH
+  export PATH=/opt/homebrew/bin:$PATH
   install_plugin "https://github.com/halcyon/asdf-java.git" "java"
   install_plugin "https://github.com/asdf-vm/asdf-ruby.git" "ruby"
   install_plugin "https://github.com/asdf-vm/asdf-nodejs.git" "nodejs"
@@ -15,7 +17,7 @@ install_asdf() {
   asdf install java openjdk-17.0.2
   asdf install ruby 3.1.2
   asdf install nodejs 18.10.0
-
+  export PATH=$old_path
   printf "✅ \033[92mall asdf tools installed\033[0m\n"
 }
 
