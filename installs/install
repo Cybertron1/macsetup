@@ -6,7 +6,7 @@ tools="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/tools"
 printf "+------------------------------------------------------------+
 |  🛠  Macsetup is going to install dev tools, apps and more  |
 +------------------------------------------------------------+\n\n"
-declare -a Files=("xcodeselect" "homebrew" "jabba" "rvm" "nvm" "zsh" "tools" "apps")
+declare -a Files=("xcodeselect" "homebrew" "zsh" "tools" "asdf" "apps")
 for file in "${Files[@]}"; do
   printf "\033[36m🛠  Next up: %s\033[0m\n" "$file"
   bash "$tools/$file"

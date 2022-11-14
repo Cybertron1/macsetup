@@ -40,15 +40,11 @@ This will remove .zshrc, .bashrc, .bash_profile, .bash_history\033[0m (y/n): "
   rm -rf $dir
   mkdir -p $dir
   p10k="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-  alias="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/alias-tips"
 
   if ! [[ -d "$p10k" ]]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$p10k"
   fi
 
-  if ! [[ -d "$alias" ]]; then
-    git clone --depth=1 https://github.com/djui/alias-tips.git "$alias"
-  fi
   chmod 755 /opt/homebrew/share/zsh
   chmod 755 /opt/homebrew/share/zsh/site-functions
 }

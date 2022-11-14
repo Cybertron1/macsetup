@@ -10,7 +10,7 @@
                     <key>file-data</key>
                     <dict>
                         <key>_CFURLString</key>
-                        <string>/Applications/Safari.app</string>
+                        <string>/Applications/Firefox.app</string>
                         <key>_CFURLStringType</key>
                         <integer>0</integer>
                     </dict>
@@ -22,7 +22,7 @@
                     <key>file-data</key>
                     <dict>
                         <key>_CFURLString</key>
-                        <string>/System/Applications/Mail.app/</string>
+                        <string>/Applications/Slack.app/</string>
                         <key>_CFURLStringType</key>
                         <integer>0</integer>
                     </dict>
@@ -34,15 +34,23 @@
                     <key>file-data</key>
                     <dict>
                         <key>_CFURLString</key>
-                        <string>/Applications/Spotify.app</string>
+                        <string>/Applications/Microsoft Teams.app</string>
                         <key>_CFURLStringType</key>
                         <integer>0</integer>
                     </dict>
                 </dict>
             </dict>
             <dict>
-                <key>tile-type</key>
-                <string>small-spacer-tile</string>
+                <key>tile-data</key>
+                <dict>
+                    <key>file-data</key>
+                    <dict>
+                        <key>_CFURLString</key>
+                        <string>/Applications/Microsoft Outlook.app</string>
+                        <key>_CFURLStringType</key>
+                        <integer>0</integer>
+                    </dict>
+                </dict>
             </dict>
             <dict>
                 <key>tile-data</key>
@@ -62,7 +70,7 @@
                     <key>file-data</key>
                     <dict>
                         <key>_CFURLString</key>
-                        <string>/Applications/IntelliJ IDEA.app</string>
+                        <string>/Applications/WebStorm.app</string>
                         <key>_CFURLStringType</key>
                         <integer>0</integer>
                     </dict>
@@ -74,59 +82,7 @@
                     <key>file-data</key>
                     <dict>
                         <key>_CFURLString</key>
-                        <string>/Applications/RubyMine.app</string>
-                        <key>_CFURLStringType</key>
-                        <integer>0</integer>
-                    </dict>
-                </dict>
-            </dict>
-            <dict>
-                <key>tile-data</key>
-                <dict>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>/Applications/Xcode.app</string>
-                        <key>_CFURLStringType</key>
-                        <integer>0</integer>
-                    </dict>
-                </dict>
-            </dict>
-            <dict>
-                <key>tile-type</key>
-                <string>small-spacer-tile</string>
-            </dict>
-            <dict>
-                <key>tile-data</key>
-                <dict>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>/Applications/Final Cut Pro.app</string>
-                        <key>_CFURLStringType</key>
-                        <integer>0</integer>
-                    </dict>
-                </dict>
-            </dict>
-            <dict>
-                <key>tile-data</key>
-                <dict>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>/Applications/Adobe Photoshop 2020/Adobe Photoshop 2020.app</string>
-                        <key>_CFURLStringType</key>
-                        <integer>0</integer>
-                    </dict>
-                </dict>
-            </dict>
-            <dict>
-                <key>tile-data</key>
-                <dict>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
+                        <string>/Applications/Spotify.app</string>
                         <key>_CFURLStringType</key>
                         <integer>0</integer>
                     </dict>

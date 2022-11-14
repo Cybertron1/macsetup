@@ -4,7 +4,7 @@ set -e
 
 function jetbrains() {
   local BASE="$HOME/Library/Application Support/JetBrains"
-  local CASKS=("intellij-idea" "webstorm" "rubymine")
+  local CASKS=("webstorm")
 
   for CASK in "${CASKS[@]}"; do
     if ! brew cask list "$CASK" &>/dev/null; then

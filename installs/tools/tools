@@ -1,36 +1,15 @@
 #!/bin/bash
 set -e
 
-xcv() {
-  source "$HOME/.rvm/scripts/rvm"
-  gem list -i xcode-install >/dev/null || sudo gem install xcode-install
-  if [[ -n $(xcversion installed) ]]; then
-    return
-  fi
-  echo -e "\033[92m----------------------------------------------------------------
-Please provide your Apple Developer Program account credentials
-----------------------------------------------------------------\033[0m"
-  read -rp 'E-Mail: ' email
-  export XCODE_INSTALL_USER="$email"
-  xcversion update
-  local version
-  version=$(xcversion list | grep -v ".*beta" | tail -n1)
-  xcversion install "$version" || printf "⛔️ \033[91mcouldn't install xcode %s\033[0m\n" "$version" && return
-  xcversion select "$version"
-  exit 1
-}
-
 install() {
-  xcversion -v &>/dev/null || xcv
-  command -v fastlane &>/dev/null || sudo gem install fastlane
-  export CI=true
-  fastlane enable_auto_complete
-  unset CI
   eval "$(/opt/homebrew/bin/brew shellenv)" || true
   brew list mas &>/dev/null || brew install mas
   brew list coreutils &>/dev/null || brew install coreutils
   brew list git &>/dev/null || brew install git
   brew list vim &>/dev/null || brew install vim
+  brew list asdf &>/dev/null || brew install asdf
+  brew list aria2 &>/dev/null || brew install aria2
+  brew list xcodes &>/dev/null || brew install xcodes
 }
 
 install

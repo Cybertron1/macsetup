@@ -5,7 +5,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 alias dev="cd $HOME/Documents/dev"
-alias z="cd $HOME/Documents/school/"
+alias p="cd $HOME/Documents/dev/projects/"
 
 alias Storm="open ./ -a WebStorm"
 alias Mine="open ./ -a RubyMine"
