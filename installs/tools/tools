@@ -3,7 +3,6 @@ set -e
 
 install() {
   eval "$(/opt/homebrew/bin/brew shellenv)" || true
-  brew list mas &>/dev/null || brew install mas
   brew list coreutils &>/dev/null || brew install coreutils
   brew list git &>/dev/null || brew install git
   brew list vim &>/dev/null || brew install vim

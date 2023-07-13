@@ -30,7 +30,7 @@ chmod +x setup
 ### Git-free install
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/master/install)
+bash <(curl -s https://raw.githubusercontent.com/Cybertron1/macsetup/private/install)
 ```
 
 ## What it installs

@@ -19,7 +19,7 @@ apps() {
   install_cask sourcetree
   install_cask 1password
   install_cask alfred
-  install_cask hyperswitch
+  install_cask alt-tab
   install_cask postman
   install_cask spotify
   install_cask whatsapp
@@ -27,11 +27,8 @@ apps() {
   install_cask rectangle
   install_cask hiddenbar
   install_cask firefox
-  install_cask citrix-workspace
-  install_cask android-studio
   install_cask figma
-
-  install_mas 1037126344 || printf "⚠️\033[93mPlease log into the App Store to install Apple Configurator 2\033[0m\n"
+  install_cask protonmail-bridge
 
   printf "✅ \033[92mall apps installed\033[0m\n"
 }

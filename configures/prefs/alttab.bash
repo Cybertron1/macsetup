@@ -1,0 +1,9 @@
+defaults write com.lwouis.alt-tab-macos.plist SUHasLaunchedBefore -int 1
+defaults write com.lwouis.alt-tab-macos.plist SUUpdateRelaunchingMarker -int 0;
+defaults write com.lwouis.alt-tab-macos.plist holdShortcut -string "\\U2318";
+defaults write com.lwouis.alt-tab-macos.plist shortcutStyle -int 0;
+defaults write com.lwouis.alt-tab-macos.plist showHiddenWindows -int 1;
+defaults write com.lwouis.alt-tab-macos.plist showMinimizedWindows -int 1;
+defaults write com.lwouis.alt-tab-macos.plist showOnScreen -int 1;
+defaults write com.lwouis.alt-tab-macos.plist updatePolicy -int 1;
+defaults write com.lwouis.alt-tab-macos.plist windowMaxWidthInRow -int 30;

@@ -6,7 +6,7 @@ WORK_DIR=$(mktemp -d)
 echo "$WORK_DIR"
 cd "$WORK_DIR"
 
-curl -o prog.zip -LJ https://github.com/Cybertron1/macsetup/archive/master.zip
+curl -o prog.zip -LJ https://github.com/Cybertron1/macsetup/archive/private.zip
 unzip -q prog.zip
 
 cd macsetup*/
